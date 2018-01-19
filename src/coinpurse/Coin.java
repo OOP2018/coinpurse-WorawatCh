@@ -2,8 +2,7 @@ package coinpurse;
 
 import java.lang.Comparable;
 import java.util.ArrayList;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+import java.util.List;
 
 /**
  * Coin represents coinage (money) with a fixed value and currency.
@@ -55,5 +54,4 @@ public class Coin implements Comparable<Coin> {
 	public String toString() {
 		return value + "-" + currency;
 	}
-	
 }

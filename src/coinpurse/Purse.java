@@ -1,5 +1,7 @@
 package coinpurse;
- 
+ import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 //TODO import List, ArrayList, and Collections
 // You will use Collections.sort() to sort the coins
 
@@ -8,12 +10,11 @@ package coinpurse;
  *  You can insert coins, withdraw money, check the balance,
  *  and check if the purse is full.
  *  
- *  @author your name
+ *  @author Worawat Chueajedton
  */
 public class Purse {
     /** Collection of objects in the purse. */
     //TODO declare a List of Coins named "money".
-    
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
      */
