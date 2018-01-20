@@ -109,8 +109,7 @@ public class Purse {
 	 *         withdraw requested amount.
 	 */
 	public Coin[] withdraw(double amount) {
-		Collections.sort(money);
-		Collections.reverse(money);
+		MoneyUtil.sortCoins(this.money);
 		List<Coin> tempList = new ArrayList<Coin>();
 		if (amount != 0) {
 			if (amount >= this.getBalance()) {
