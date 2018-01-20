@@ -1,4 +1,6 @@
 package coinpurse;
+
+
  
 /**
  * A main class to create objects and connect objects together.
