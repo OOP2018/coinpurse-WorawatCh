@@ -28,7 +28,7 @@ public class MoneyUtil {
 	public static List<Coin> filterByCurrency(List<Coin> coins, String currency) {
 		List<Coin> tempList = new ArrayList<Coin>();
 		for (Coin c : coins) {
-			if (c.getCurrency() == currency) {
+			if (c.getCurrency().equals(currency)) {
 				tempList.add(c);
 			}
 		}
