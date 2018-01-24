@@ -3,8 +3,6 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-//TODO import List, ArrayList, and Collections
-// You will use Collections.sort() to sort the coins
 
 /**
  * A coin purse contains coins. You can insert coins, withdraw money, check the
@@ -21,6 +19,7 @@ public class Purse {
 	 * when the purse is created and cannot be changed.
 	 */
 	private final int capacity;
+
 	/**
 	 * Create a purse with a specified capacity.
 	 * 
@@ -72,10 +71,6 @@ public class Purse {
 	public boolean isFull() {
 		if (count() == capacity)
 			return true;
-		else if (count() < capacity)
-			return false;
-		else if (count() > capacity)
-			return false;
 		return false;
 	}
 
@@ -88,7 +83,7 @@ public class Purse {
 	 * @return true if coin inserted, false if can't insert
 	 */
 	public boolean insert(Coin coin) {
-		if (isFull() == true) {
+		if (isFull()) {
 			return false;
 		} else if (coin.getValue() <= 0) {
 			return false;
@@ -111,13 +106,16 @@ public class Purse {
 	public Coin[] withdraw(double amount) {
 		MoneyUtil.sortCoins(this.money);
 		List<Coin> tempList = new ArrayList<Coin>();
+		if(this.getBalance() == 0.00){
+			return null;
+		}
 		if (amount != 0) {
-			if (amount >= this.getBalance()) {
-				for(int i = 0 ; i < money.size() ; i++ ){
-		    		if(money.get(i).getValue() <= amount ){
-		    			tempList.add(money.get(i));
-		    			amount -= money.get(i).getValue();
-		    		}
+			if (amount <= this.getBalance()) {
+				for (int i = 0; i < money.size(); i++) {
+					if (money.get(i).getValue() <= amount) {
+						tempList.add(money.get(i));
+						amount -= money.get(i).getValue();
+					}
 				}
 			}
 			if (amount == 0) {

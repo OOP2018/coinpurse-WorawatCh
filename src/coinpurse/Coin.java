@@ -47,7 +47,7 @@ public class Coin implements Comparable<Coin> {
 	 * 
 	 * @return currency of coin
 	 */
-	public String getCurrenccy() {
+	public String getCurrency() {
 		return currency;
 	}
 
@@ -56,7 +56,7 @@ public class Coin implements Comparable<Coin> {
 	 * Two coins are equal if they have the same value and same currency
 	 * 
 	 * @param arg
-	 *           An object you want to check, Is it equal?
+	 *            An object you want to check, Is it equal?
 	 * @return if it equal return true, if not return false.
 	 */
 	public boolean equal(Object arg) {
@@ -65,10 +65,8 @@ public class Coin implements Comparable<Coin> {
 		if (arg.getClass() != this.getClass())
 			return false;
 		Coin other = (Coin) arg;
-		if (other.getValue() == value && other.getCurrenccy().equalsIgnoreCase(currency)) {
-			return true;
-		}
-		return false;
+		return (other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency));
+
 	}
 
 	/**
@@ -76,19 +74,12 @@ public class Coin implements Comparable<Coin> {
 	 * To compare which one is greater of less than another one.
 	 * 
 	 * @param arg0
-	 *           coin that you want to check. 
+	 *            coin that you want to check.
 	 * 
 	 */
 	@Override
 	public int compareTo(Coin arg0) {
-		if (value < arg0.getValue()) {
-			return -1;
-		} else if (value > arg0.getValue()) {
-			return 1;
-		} else if (value == arg0.getValue()) {
-			return 0;
-		}
-		return 0;
+		return (int) Math.signum(arg0.getValue() - value);
 	}
 
 	/**
