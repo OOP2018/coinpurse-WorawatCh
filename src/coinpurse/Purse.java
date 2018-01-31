@@ -13,7 +13,7 @@ import java.util.List;
 public class Purse {
 	/** Collection of objects in the purse. */
 	// TODO declare a List of Coins named "money".
-	private List<Coin> money = new ArrayList<Coin>();
+	private List<Valuable> money = new ArrayList<Valuable>();
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set
 	 * when the purse is created and cannot be changed.
@@ -47,7 +47,7 @@ public class Purse {
 	 */
 	public double getBalance() {
 		double total = 0;
-		for (Coin coins : money) {
+		for (Valuable coins : money) {
 			total += coins.getValue();
 		}
 		return total;
@@ -105,7 +105,7 @@ public class Purse {
 	 */
 	public Coin[] withdraw(double amount) {
 		MoneyUtil.sortCoins(this.money);
-		List<Coin> tempList = new ArrayList<Coin>();
+		List<Valuable> tempList = new ArrayList<Valuable>();
 		if(this.getBalance() == 0.00){
 			return null;
 		}
@@ -119,7 +119,7 @@ public class Purse {
 				}
 			}
 			if (amount == 0) {
-				for (Coin c1 : tempList) {
+				for (Valuable c1 : tempList) {
 					money.remove(c1);
 				}
 			}
@@ -136,23 +136,5 @@ public class Purse {
 	 */
 	public String toString() {
 		return "We have " + count() + " coins with value " + getBalance();
-	}
-
-	public static void main(String[] args) {
-		Purse purse = new Purse(3);
-		// System.out.println(purse.getBalance( ));
-		// System.out.println(purse.isFull( ));
-		purse.insert(new Coin(5, "THB"));
-		purse.insert(new Coin(10, "THB"));
-		purse.insert(new Coin(0, "THB"));
-		purse.insert(new Coin(1, "THB"));
-		purse.insert(new Coin(5, "THB"));
-		// System.out.println(purse.count());
-		// System.out.println(purse.isFull());
-		// System.out.println(purse.getBalance());
-		System.out.println(purse.toString());
-		purse.withdraw(12);
-		// purse.withdraw(11);
-		System.out.println(purse.toString());
 	}
 }

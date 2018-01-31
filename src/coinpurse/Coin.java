@@ -10,7 +10,7 @@ import java.util.List;
  * @author Worawat Chueajedton
  */
 
-public class Coin implements Comparable<Coin> {
+public class Coin implements Valuable {
 
 	private double value;
 	private String currency;
@@ -78,7 +78,7 @@ public class Coin implements Comparable<Coin> {
 	 * 
 	 */
 	@Override
-	public int compareTo(Coin arg0) {
+	public int compareTo(Valuable arg0) {
 		return (int) Math.signum(arg0.getValue() - value);
 	}
 

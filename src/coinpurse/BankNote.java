@@ -10,6 +10,7 @@ public class BankNote {
 	public BankNote(double value, String currency){
 		this.value =value;
 		this.currency = currency;
+		this.serialNumber = nextSerialNumber++;
 	}
 	
 	public double getValue() {

@@ -25,9 +25,9 @@ public class MoneyUtil {
 	 *            Currency of coin which you want to filter.
 	 * @return List of coin that already filter by currency
 	 */
-	public static List<Coin> filterByCurrency(List<Coin> coins, String currency) {
-		List<Coin> tempList = new ArrayList<Coin>();
-		for (Coin c : coins) {
+	public static List<Valuable> filterByCurrency(List<Valuable> coins, String currency) {
+		List<Valuable> tempList = new ArrayList<Valuable>();
+		for (Valuable c : coins) {
 			if (c.getCurrency().equals(currency)) {
 				tempList.add(c);
 			}
@@ -39,12 +39,12 @@ public class MoneyUtil {
 	 * Sort a list of coins and print the result on the console. Write a
 	 * separate method to print the list.
 	 * 
-	 * @param coins
+	 * @param money
 	 *          List of coin you want to sort
 	 */
-	public static void sortCoins(List<Coin> coins) {
-		Collections.sort(coins);
-		Collections.reverse(coins);
+	public static void sortCoins(List<Valuable> money) {
+		Collections.sort(money);
+		Collections.reverse(money);
 	}
 
 }
