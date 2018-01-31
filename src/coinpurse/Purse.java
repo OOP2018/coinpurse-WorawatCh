@@ -78,17 +78,17 @@ public class Purse {
 	 * Insert a coin into the purse. The coin is only inserted if the purse has
 	 * space for it and the coin has positive value. No worthless coins!
 	 * 
-	 * @param coin
+	 * @param valuable
 	 *            is a Coin object to insert into purse
 	 * @return true if coin inserted, false if can't insert
 	 */
-	public boolean insert(Coin coin) {
+	public boolean insert(Valuable valuable) {
 		if (isFull()) {
 			return false;
-		} else if (coin.getValue() <= 0) {
+		} else if (valuable.getValue() <= 0) {
 			return false;
 		} else {
-			money.add(coin);
+			money.add(valuable);
 			return true;
 		}
 	}
@@ -137,4 +137,6 @@ public class Purse {
 	public String toString() {
 		return "We have " + count() + " coins with value " + getBalance();
 	}
+	
+	
 }

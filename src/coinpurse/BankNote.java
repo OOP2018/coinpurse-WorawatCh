@@ -1,6 +1,6 @@
 package coinpurse;
 
-public class BankNote {
+public class BankNote implements Valuable{
 	
 	private long nextSerialNumber = 1000000;
 	private double value;
@@ -42,6 +42,19 @@ public class BankNote {
 	
 	public String toString(){
 		return value +" - "+ currency+" note ["+getSerial()+"]";
+	}
+	
+	/**
+	 * 
+	 * To compare which one is greater of less than another one.
+	 * 
+	 * @param arg0
+	 *            coin that you want to check.
+	 * 
+	 */
+	@Override
+	public int compareTo(Valuable arg0) {
+		return (int) Math.signum(arg0.getValue() - value);
 	}
 }
 
