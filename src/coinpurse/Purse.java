@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	// TODO declare a List of Coins named "money".
 	private List<Valuable> money = new ArrayList<Valuable>();
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set
@@ -103,27 +102,33 @@ public class Purse {
 	 * @return array of Coin objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Coin[] withdraw(double amount) {
-		MoneyUtil.sortCoins(this.money);
+	public Valuable[] withdraw(double amount) {
+		MoneyUtil.sortCoins(money);
 		List<Valuable> tempList = new ArrayList<Valuable>();
-		if(this.getBalance() == 0.00){
+		if (this.getBalance() == 0.00) {
 			return null;
 		}
-		if (amount != 0) {
-			if (amount <= this.getBalance()) {
-				for (int i = 0; i < money.size(); i++) {
-					if (money.get(i).getValue() <= amount) {
-						tempList.add(money.get(i));
-						amount -= money.get(i).getValue();
-					}
+		if (amount < 0) {
+			return null;
+		}
+		if (amount <= this.getBalance()) {
+			for (int i = 0; i < money.size(); i++) {
+				if (money.get(i).getValue() <= amount) {
+					tempList.add(money.get(i));
+					amount -= money.get(i).getValue();
 				}
+			}
+			if (amount != 0) {
+				return null;
 			}
 			if (amount == 0) {
 				for (Valuable c1 : tempList) {
+					if(money.contains(c1)){
 					money.remove(c1);
+					}
 				}
 			}
-			Coin[] array = new Coin[tempList.size()]; // create the array
+			Valuable[] array = new Valuable[tempList.size()]; // create the array
 			tempList.toArray(array);
 			return array;
 		}
@@ -137,6 +142,5 @@ public class Purse {
 	public String toString() {
 		return "We have " + count() + " coins with value " + getBalance();
 	}
-	
-	
+
 }

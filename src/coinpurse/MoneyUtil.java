@@ -44,7 +44,7 @@ public class MoneyUtil {
 	 */
 	public static void sortCoins(List<Valuable> money) {
 		Collections.sort(money);
-		Collections.reverse(money);
+		//Collections.reverse(money);
 	}
 
 }
