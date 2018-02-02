@@ -1,5 +1,11 @@
 package coinpurse;
 
+/**
+ * A bank note money with value and currency
+ * 
+ * @author Worawat Chueajedton
+ *
+ */
 public class BankNote implements Valuable{
 	
 	private long nextSerialNumber = 1000000;
@@ -7,30 +13,56 @@ public class BankNote implements Valuable{
 	private String currency;
 	private long serialNumber;
 
+	/**
+	 * Create bank note with value and currency
+	 * 
+	 * @param value
+	 *          is value of money
+	 * @param currency
+	 *          is currency of money
+	 */
 	public BankNote(double value, String currency){
 		this.value =value;
 		this.currency = currency;
 		this.serialNumber = nextSerialNumber++;
 	}
 	
+	/**
+	 * To get value of bank note
+	 * 
+	 * @return value of bank note
+	 * 
+	 */
 	public double getValue() {
 		return value;
 	}
 
 	/**
+	 * To get currency of bank note
 	 * 
-	 * Get a BankNote's currency
-	 * 
-	 * @return currency of BankNote
+	 * @return currency of bank note
 	 */
 	public String getCurrency() {
 		return currency;
 	}
 	
+	/**
+	 * To get serial number of bank note
+	 * 
+	 * @return serial number of bank note
+	 */
 	public long getSerial(){
 		return nextSerialNumber;
 	}
 	
+	/**
+	 * 
+	 * Two bank note are equal if they have the same value and same currency
+	 * 
+	 * @param arg
+	 *            An object you want to check, Is it equal?
+	 * @return if it equal return true, if not return false.
+	 */
 	public boolean equal(Object arg) {
 		if (arg == null)
 			return false;
@@ -40,6 +72,13 @@ public class BankNote implements Valuable{
 		return (other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency));
 	}
 	
+	/**
+	 * 
+	 * Show description of bank note
+	 * 
+	 * @return bank note's description
+	 * 
+	 */
 	public String toString(){
 		return value +" - "+ currency+" note ["+getSerial()+"]";
 	}
