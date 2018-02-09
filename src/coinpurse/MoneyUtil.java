@@ -2,6 +2,7 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -40,11 +41,12 @@ public class MoneyUtil {
 	 * separate method to print the list.
 	 * 
 	 * @param money
-	 *          List of coin you want to sort
+	 *            List of coin you want to sort
 	 */
 	public static void sortCoins(List<Valuable> money) {
-		Collections.sort(money);
-		//Collections.reverse(money);
+		Comparator<Valuable> com = new ValueComparator();
+		Collections.sort(money,com);
+		Collections.reverse(money);
 	}
 
 }

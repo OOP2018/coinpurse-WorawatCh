@@ -20,5 +20,4 @@ public interface Valuable extends Comparable<Valuable> {
 	 */
 	public String getCurrency();
 
-
 }

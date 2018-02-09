@@ -1,19 +1,12 @@
 package coinpurse;
 
-import java.lang.Comparable;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Coin represents coinage (money) with a fixed value and currency.
  * 
  * @author Worawat Chueajedton
  */
 
-public class Coin implements Valuable {
-
-	private double value;
-	private String currency;
+public class Coin extends Money {
 
 	/**
 	 * 
@@ -26,47 +19,7 @@ public class Coin implements Valuable {
 	 */
 
 	public Coin(double value, String currency) {
-		this.value = value;
-		this.currency = currency;
-	}
-
-	/**
-	 * 
-	 * Get a coin's value.
-	 * 
-	 * @return value of coin
-	 * 
-	 */
-	public double getValue() {
-		return value;
-	}
-
-	/**
-	 * 
-	 * Get a coin's currency
-	 * 
-	 * @return currency of coin
-	 */
-	public String getCurrency() {
-		return currency;
-	}
-
-	/**
-	 * 
-	 * Two coins are equal if they have the same value and same currency
-	 * 
-	 * @param arg
-	 *            An object you want to check, Is it equal?
-	 * @return if it equal return true, if not return false.
-	 */
-	public boolean equal(Object arg) {
-		if (arg == null)
-			return false;
-		if (arg.getClass() != this.getClass())
-			return false;
-		Coin other = (Coin) arg;
-		return (other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency));
-
+		super(value, currency);
 	}
 
 	/**
@@ -90,6 +43,6 @@ public class Coin implements Valuable {
 	 * 
 	 */
 	public String toString() {
-		return value + "-" + currency;
+		return getValue() + "-" + getCurrency();
 	}
 }

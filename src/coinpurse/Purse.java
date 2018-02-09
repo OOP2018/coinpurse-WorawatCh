@@ -1,7 +1,6 @@
 package coinpurse;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,8 +45,8 @@ public class Purse {
 	 */
 	public double getBalance() {
 		double total = 0;
-		for (Valuable coins : money) {
-			total += coins.getValue();
+		for (Valuable values : money) {
+			total += values.getValue();
 		}
 		return total;
 	}
@@ -112,23 +111,20 @@ public class Purse {
 			return null;
 		}
 		if (amount <= this.getBalance()) {
-			for (int i = 0; i < money.size(); i++) {
-				if (money.get(i).getValue() <= amount) {
-					tempList.add(money.get(i));
-					amount -= money.get(i).getValue();
+			for (Valuable m : money) {
+				if (m.getValue() <= amount) {
+					tempList.add(m);
+					amount -= m.getValue();
 				}
 			}
 			if (amount != 0) {
 				return null;
 			}
-			if (amount == 0) {
-				for (Valuable c1 : tempList) {
-					if(money.contains(c1)){
-					money.remove(c1);
-					}
-				}
+
+			for (Valuable c1 : tempList) {
+				money.remove(c1);
 			}
-			Valuable[] array = new Valuable[tempList.size()]; // create the array
+			Valuable[] array = new Valuable[tempList.size()];
 			tempList.toArray(array);
 			return array;
 		}
