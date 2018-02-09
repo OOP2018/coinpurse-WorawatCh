@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * A super class of coin and bank note
+ * A super class of coin and bank note.It has same method that coin and bank note has the same.
  * 
  * @author Worawat Chuejedton
  *
@@ -24,7 +24,7 @@ public class Money implements Valuable{
 
 	/**
 	 * 
-	 * Get a coin's value.
+	 * Get a money's value.
 	 * 
 	 * @return value of coin
 	 * 
@@ -35,7 +35,7 @@ public class Money implements Valuable{
 
 	/**
 	 * 
-	 * Get a coin's currency
+	 * Get a money's currency
 	 * 
 	 * @return currency of coin
 	 */
@@ -43,6 +43,14 @@ public class Money implements Valuable{
 		return currency;
 	}
 
+	/**
+	 * 
+	 * To compare which one is greater of less than another one.
+	 * 
+	 * @param arg0
+	 *            coin that you want to check.
+	 * 
+	 */
 	@Override
 	public int compareTo(Valuable arg0) {
 		return (int) Math.signum(arg0.getValue() - value);
@@ -50,7 +58,7 @@ public class Money implements Valuable{
 
 	/**
 	 * 
-	 * Two bank note are equal if they have the same value and same currency
+	 * Two money note are equal if they have the same value and same currency
 	 * 
 	 * @param arg
 	 *            An object you want to check, Is it equal?
@@ -62,10 +70,8 @@ public class Money implements Valuable{
 		if (arg.getClass() != this.getClass())
 			return false;
 		 Money other = (Money) arg;
-		if(other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency)){
-			return true;
-		}
-		return false;
+		return (other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency));
+			
 	}
 
 }
