@@ -44,23 +44,27 @@ public class BankNote extends Money {
 		return getValue() + " - " + getValue() + " note [" + getSerial() + "]";
 	}
 
-	/**
-	 * 
-	 * To compare which one is greater of less than another one.
-	 * 
-	 * @param arg0
-	 *            coin that you want to check.
-	 * 
-	 */
-	@Override
-	public int compareTo(Valuable arg0) {
-		return (int) Math.signum(arg0.getValue() - value);
-	}
-
 	public static void main(String[] args) {
 		BankNote n = new BankNote(20, "Bath");
-		BankNote n1 = new BankNote(20, "Bath");
-		System.out.println(n.getSerial());
-		System.out.println(n1.getSerial());
+		BankNote n1 = new BankNote(50, "Bath");
+		// System.out.println(n.getSerial());
+		// System.out.println(n1.getSerial());
+		Purse purse = new Purse(3);
+		purse.insert(n);
+		purse.insert(n1);
+		// System.out.println(purse.getBalance());
+		BankNote n2 = new BankNote(100, "Bath");
+		BankNote n3 = new BankNote(20, "Bath");
+		purse.insert(n2);
+		// System.out.println(purse.getBalance());
+		purse.insert(n3);
+		// Should be same value because it can't insert
+		 System.out.println(purse.getBalance());
+		purse.withdraw(15);
+		// Can't withdraw because it doesn't have any coin
+		System.out.println("Must be 170 : "+purse.getBalance());
+		purse.withdraw(100);
+		System.out.println("Must be 70 : "+purse.getBalance());
+
 	}
 }

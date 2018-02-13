@@ -53,7 +53,10 @@ public class Money implements Valuable{
 	 */
 	@Override
 	public int compareTo(Valuable arg0) {
-		return (int) Math.signum(arg0.getValue() - value);
+		if(arg0.getCurrency() == this.getCurrency()){
+			return Double.compare(arg0.getValue(), this.getValue());
+		}
+		return 0;
 	}
 
 	/**
@@ -72,6 +75,11 @@ public class Money implements Valuable{
 		 Money other = (Money) arg;
 		return (other.getValue() == value && other.getCurrency().equalsIgnoreCase(currency));
 			
+	}
+	
+	public static void main(String[] args) {
+		Money m1 = new Money(10, "Bath");
+		Money m2 = new Money(20, "Bath");
 	}
 
 }

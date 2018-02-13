@@ -132,6 +132,20 @@ public class Purse {
 	}
 
 	/**
+	 * Can only withdraw with "Bath" currency.
+	 * 
+	 * @param amount
+	 *            amount of value that you want to withdraw in "Bath"
+	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
+	 * 
+	 */
+	public Valuable[] withdraw(Valuable amount) {
+		Money m = new Money(amount.getValue(), "Bath");
+		return withdraw(m);
+	}
+
+	/**
 	 * toString returns a string description of the purse contents. It can
 	 * return whatever is a useful description.
 	 */
