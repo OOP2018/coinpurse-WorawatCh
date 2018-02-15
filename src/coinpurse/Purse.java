@@ -12,6 +12,7 @@ import java.util.List;
 public class Purse {
 	/** Collection of objects in the purse. */
 	private List<Valuable> money = new ArrayList<Valuable>();
+
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set
 	 * when the purse is created and cannot be changed.
@@ -92,6 +93,20 @@ public class Purse {
 	}
 
 	/**
+	 * Can only withdraw with "Bath" currency.
+	 * 
+	 * @param amount
+	 *            amount of value that you want to withdraw in "Bath"
+	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
+	 * 
+	 */
+	public Valuable[] withdraw(double amount) {
+		Money m = new Money(amount, "Bath");
+		return withdraw(m);
+	}
+
+	/**
 	 * Withdraw the requested amount of money. Return an array of Coins
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
@@ -101,23 +116,25 @@ public class Purse {
 	 * @return array of Coin objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Valuable[] withdraw(double amount) {
+	public Valuable[] withdraw(Valuable amount) {
+	
 		MoneyUtil.sortCoins(money);
 		List<Valuable> tempList = new ArrayList<Valuable>();
+		double amountValue = amount.getValue();
 		if (this.getBalance() == 0.00) {
 			return null;
 		}
-		if (amount < 0) {
+		if (amountValue < 0) {
 			return null;
 		}
-		if (amount <= this.getBalance()) {
+		if (amountValue <= this.getBalance()) {
 			for (Valuable m : money) {
-				if (m.getValue() <= amount) {
+				if (m.getValue() <= amountValue) {
 					tempList.add(m);
-					amount -= m.getValue();
+					amountValue -= m.getValue();
 				}
 			}
-			if (amount != 0) {
+			if (amountValue != 0) {
 				return null;
 			}
 
@@ -129,20 +146,6 @@ public class Purse {
 			return array;
 		}
 		return null;
-	}
-
-	/**
-	 * Can only withdraw with "Bath" currency.
-	 * 
-	 * @param amount
-	 *            amount of value that you want to withdraw in "Bath"
-	 * @return array of Coin objects for money withdrawn, or null if cannot
-	 *         withdraw requested amount.
-	 * 
-	 */
-	public Valuable[] withdraw(Valuable amount) {
-		Money m = new Money(amount.getValue(), "Bath");
-		return withdraw(m);
 	}
 
 	/**
