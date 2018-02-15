@@ -129,10 +129,11 @@ public class ConsoleDialog {
 
 	/** Make a Coin (or BankNote or whatever) using requested value. */
 	private Valuable makeMoney(double value) {
+		MoneyFactory create = MoneyFactory.getInstance();
 		if (value >= 20) {
-			return new BankNote(value, CURRENCY);
+			return create.createMoney(value);
 		}
-		return new Coin(value, CURRENCY);
+		return create.createMoney(value);
 	}
 
 }
