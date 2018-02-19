@@ -30,6 +30,9 @@ public class Coin extends Money {
 	 * 
 	 */
 	public String toString() {
+		if(value < 1){
+			return String.format("%.0f-%s",getValue()*100,getCurrency());
+		}
 		return getValue() + "-" + getCurrency();
 	}
 }

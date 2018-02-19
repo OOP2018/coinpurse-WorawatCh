@@ -10,6 +10,19 @@ public class BankNote extends Money {
 
 	private long serialNumber;
 
+	
+	/**
+	 * Create bank note with value and currency
+	 * 
+	 * @param value
+	 *            is value of money
+	 * @param currency
+	 *            is currency of money
+	 */
+	public BankNote(double value, String currency) {
+		super(value, currency);
+	}
+	
 	/**
 	 * Create bank note with value and currency
 	 * 

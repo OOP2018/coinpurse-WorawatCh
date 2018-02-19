@@ -84,7 +84,14 @@ public class ConsoleDialog {
 		Scanner scanline = new Scanner(inline);
 		while (scanline.hasNextDouble()) {
 			double value = scanline.nextDouble();
-			Valuable valuable = makeMoney(value);
+			Valuable valuable;
+			MoneyFactory makeMoney = MoneyFactory.getInstance();
+			try {
+				valuable = makeMoney.createMoney(value);
+			} catch (IllegalArgumentException e) {
+				System.out.println("Sorry, " + value + " is not a valid amount.");
+				continue; 
+			}
 			System.out.printf("Deposit %s... ", valuable.toString());
 			boolean ok = purse.insert(valuable);
 			System.out.println((ok ? "ok" : "FAILED"));

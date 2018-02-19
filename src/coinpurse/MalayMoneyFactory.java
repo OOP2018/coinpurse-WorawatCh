@@ -1,6 +1,6 @@
 package coinpurse;
 
-public class MalaiMoneyFactory extends MoneyFactory {
+public class MalayMoneyFactory extends MoneyFactory {
 	static long nextSerialNumber = 1000000;
 	private Valuable valuable;
 	private String subMalayCurrency = "Sen";

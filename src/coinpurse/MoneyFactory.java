@@ -2,13 +2,10 @@ package coinpurse;
 
 public abstract class MoneyFactory {
 
-	private static MoneyFactory factory = null;
+	private static MoneyFactory factory = null ;
 
 	public static MoneyFactory getInstance() {
-		if (factory == null) {
-           factory = new ThaiMoneyFactory();
-		}
-		return factory;
+		return factory; 
 	}
 
 	public abstract Valuable createMoney(double value);
@@ -16,5 +13,9 @@ public abstract class MoneyFactory {
 	public Valuable createMoney(String value) {
 		double trueValue = Double.parseDouble(value);
 		return createMoney(trueValue);
+	}
+	
+	public static void setMoneyFactory(MoneyFactory mf){
+		   factory = mf;
 	}
 }
