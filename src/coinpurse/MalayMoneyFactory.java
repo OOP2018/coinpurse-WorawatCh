@@ -1,11 +1,22 @@
 package coinpurse;
 
+/**
+ * Create Malaysia coin and banknote.
+ * 
+ * @author Worawat Chueajedton
+ * 
+ */
+
 public class MalayMoneyFactory extends MoneyFactory {
 	static long nextSerialNumber = 1000000;
 	private Valuable valuable;
 	private String subMalayCurrency = "Sen";
 	private String MalayCurrency = "Ringgit";
 
+	/**
+	 * Create coin and banknote.
+	 * 
+	 */
 	@Override
 	public Valuable createMoney(double value) {
 		if (value < 1) {
