@@ -20,10 +20,10 @@ public class MalayMoneyFactory extends MoneyFactory {
 	@Override
 	public Valuable createMoney(double value) {
 		if (value < 1) {
-			return valuable = new Coin(value,subMalayCurrency);
+			return valuable = new Coin(value,"Sen");
 		} else if (value == 1 || value == 2 || value == 5 || value == 10 || value == 20 || value ==50 || value == 100) {
 			return valuable = new BankNote(value,MalayCurrency, nextSerialNumber++);
 		}
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("Sorry "+value+" is not valid");
 	}
 }

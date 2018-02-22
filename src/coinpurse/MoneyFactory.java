@@ -40,15 +40,21 @@ public abstract class MoneyFactory {
 	 * @return
 	 */
 	public Valuable createMoney(String value) {
-		double trueValue = Double.parseDouble(value);
+		double trueValue = 0.0;
+		try {
+			 trueValue = Double.parseDouble(value);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Sorry value is valid");
+		}
 		return createMoney(trueValue);
+
 	}
 
 	/**
 	 * To set what country you want to create money.
 	 * 
 	 * @param mf
-	 *         object of selected country
+	 *            object of selected country
 	 */
 	public static void setMoneyFactory(MoneyFactory mf) {
 		factory = mf;
